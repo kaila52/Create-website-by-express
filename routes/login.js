@@ -1,18 +1,19 @@
 const express = require('express');
 const router = express.Router();
+var isLogin = false;
 
 router.use(express.urlencoded())
 
 router.post('/',(req,res,next)=>{
-    const arr = [{
-        username : req.body.username,
-        password : req.body.password
-    }]
-    if(req.body.username == 'admin' && req.body.password == 'admin123'){
-        res.send('Logged in successfully')
+    if(req.body.username == 'admin' && req.body.password == '123'){
+        isLogin = true;
+        next()
     }else{
-        res.redirect('/login')
+        next({})
     }
+},(error,req,res,next)=>{
+    res.send(error)
 })
+
 
 module.exports = router;
