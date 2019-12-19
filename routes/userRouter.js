@@ -1,11 +1,8 @@
-const express = require('express')
-const router = express.Router()
-const path = require('path')
+const express = require('express');
+const router = express.Router();
 
 router.get('/',(req,res,next)=>{
-    res.sendFile(path.join(__dirname,'../views/index.html'))
+    res.send(`<h1>day la the h1</h1>`)
 })
-router.get('/home',(req,res,next)=>{
-    res.send('<h2>day la h2</h2>')
-})
+
 module.exports = router;
